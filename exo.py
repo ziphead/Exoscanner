@@ -1,23 +1,50 @@
 from lxml import etree
-
-class Systems():
-    def __init__(self, data):
+from peewee import *
+db = MySQLDatabase('exop', user='root',passwd='123')
+class Catmodel(Model):
+    class Meta:
+        database = db
+class Scanner():
+    def __init__(self):
         self.dbxml = etree.parse('systems.xml')
         self.tree = self.dbxml.xpath('/systems')
-        self.data = data
-    def scan(self):
-        for system in self.dbxml.xpath('/systems/system'):
-            print "=>",system.tag , "system ninfo : ", system.text
+        self.sysinfo = []   
+        self.starinfo = []
+        self.bodyinfo = []    
+    
+    def get_fields(self): # This method gets 3 lists of unique parameter fields for systems, stars, planets
+        for system in self.dbxml.xpath('/systems/system'):                       
             for star in system:
-                print "===>",star.tag, "star info : ", star.text
-                for planet in star:
-                    print "=====>", planet.tag, "planet info : ", planet.text
-                    for planetelem in planet:
-                        print "========>", planetelem.tag, "planet info : ", planetelem.text
+                for sun in star:
+                    for body in sun:
+                        if body.tag not in self.bodyinfo :              
+                            self.bodyinfo.append(body.tag)
+                        else: continue
+                    if sun.tag not in self.starinfo :              
+                        self.starinfo.append(sun.tag)
+                    else: continue 
+                if star.tag not in self.sysinfo :              
+                    self.sysinfo.append(star.tag)
+                else: continue
+        return self.sysinfo, self.starinfo, self.bodyinfo
+ 
 
-                #print element.tag, element.text, "parent is ",  nm, "\n"
+x =   Scanner().get_fields()    
 
-x = Systems("yaayay").scan()
+for i in x:
+    print i
+sysattrs = {field: CharField() for field in x[0]}
+starattrs = {field: CharField() for field in x[1]}
+bodyattrs = {field: CharField() for field in x[2]}
+Systems = type('Systems', (Catmodel,), sysattrs)
+Stars = type('Stars', (Catmodel,), starattrs)
+Bodies = type('Bodies', (Catmodel,), bodyattrs)
+
+
+db.connect()
+
+db.create_tables([Systems, Stars, Bodies], safe=True)
+
   
 raw_input('hello')
 
