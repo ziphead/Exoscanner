@@ -17,7 +17,9 @@ Used python modules:
 Tested with Ubuntu 14.4
 
 Before launching this program please make sure you have done the following preparations:
+
 1) Working mysql server on your localhost or on a distant server.
+
 2) Exoscanner cooks tables only. You'll need to create a new database or use an existing one. Give mysql user  the priviliges   to insert, delete and  alter table. 
 
 3) Exoscanner is a python 2.7 code. It uses two  libraries which are not icluded in the standart python package. You have to install them manualy with pip.
@@ -32,6 +34,7 @@ $ pip install lxml
 
 ```
 4) Download Exoscanner folder then download and extract open exoplanet catalogue (https://github.com/OpenExoplanetCatalogue/oec_gzip/raw/master/systems.xml.gz) 
+
 5) Open models.py and type your mysql database name, username and password
 
 6) launch  exo.py
