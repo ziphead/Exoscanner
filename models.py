@@ -63,7 +63,7 @@ class Star(BaseModel):
     magv = FloatField(db_column='magV', null=True)
     mass = FloatField(null=True)
     metallicity = FloatField(null=True)
-    parent_star = ForeignKeyField(db_column='parent_star', null=True, rel_model='self', to_field='star')
+    #parent_star = ForeignKeyField(db_column='parent_star', null=True, rel_model='self', to_field='star')
     radius = FloatField(null=True)
     spectraltype = CharField(null=True)
     star = IntegerField(db_column='star_id', primary_key=True)

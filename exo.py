@@ -32,13 +32,7 @@ class Scanner():
         elif parent == 'system': 
             sn['star'] = self.starid
             sn['sys'] = dataid
-        elif parent == 'star': 
-            sn['star'] = self.starid
-            sn['parent_star'] = dataid
         for star in data:
-            if star.tag == 'star':
-                self.star_finder(star, self.starid, parent = 'star')
-                continue
             if star.tag == 'planet':
                 self.planet_finder(star, self.starid, parent = 'star')
                 continue
