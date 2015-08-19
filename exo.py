@@ -33,6 +33,7 @@ class Scanner():
             sn['star'] = self.starid
             sn['sys'] = dataid
         for star in data:
+            tag = star.tag.lower()
             if star.tag == 'planet':
                 self.planet_finder(star, self.starid, parent = 'star')
                 continue
@@ -47,12 +48,12 @@ class Scanner():
                     sn['name'] = star.text
                     continue
             if star.attrib != '':
-                sn[star.tag] = star.text
+                sn[tag] = star.text
                 attrib = self.attr_check(star.attrib, star.tag) 
                 band = ' '.join(attrib)  
                 sn['attributes'] = sn.get('attributes', '') + band  
             else :
-                sn[star.tag] = star.text
+                sn[tag] = star.text
                 
         self.starinfo.append(sn)
         
@@ -64,6 +65,7 @@ class Scanner():
         elif parent == 'star': 
             bd['parent_star'] = dataid
         for planet in data:
+            tag = planet.tag.lower()
             # for planets orbiting other planets : code modifications should be made here (and extra table rows needed)
             if planet.tag == 'name':
                 if 'name'  in bd:
@@ -73,12 +75,12 @@ class Scanner():
                     bd['name'] = planet.text
                     continue
             if planet.attrib != '':
-                bd[planet.tag] = planet.text
+                bd[tag] = planet.text
                 attrib = self.attr_check(planet.attrib, planet.tag) 
                 band = ' '.join(attrib)  
                 bd['attributes'] = bd.get('attributes', '') + band  
             else :
-                bd[planet.tag] = planet.text
+                bd[tag] = planet.text
         self.bodyinfo.append(bd)
 
     def bin_finder(self, data, dataid, parent):
@@ -95,6 +97,7 @@ class Scanner():
             bn['bin'] = self.binid 
             bn['star'] = dataid
         for binstar in data:
+            tag = binstar.tag.lower()
             if binstar.tag == 'star':
                 self.star_finder(binstar, self.binid, parent = 'binary')
                 continue
@@ -111,13 +114,13 @@ class Scanner():
                 else:
                     bn['name'] = binstar.text
                     continue
-            if binstar.attrib != '':
-                bn[binstar.tag] = binstar.text
+            if binstar.attrib != '':                
+                bn[tag] = binstar.text
                 attrib = self.attr_check(binstar.attrib, binstar.tag) 
                 band = ' '.join(attrib)  
                 bn['attributes'] = bn.get('attributes', '') + band  
             else :
-                bn[binstar.tag] = binstar.text
+                bn[tag] = binstar.text
         self.bininfo.append(bn)
 
 
