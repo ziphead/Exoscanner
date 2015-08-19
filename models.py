@@ -1,5 +1,5 @@
 from peewee import *
-db = MySQLDatabase('exop', user='root',passwd='zipoza')
+db = MySQLDatabase('your_db_name', user='msql_user',passwd='password') # Type your mysql parameters here
 
 
 class BaseModel(Model):
@@ -13,7 +13,7 @@ class System(BaseModel):
     epoch = CharField(null=True)
     names = TextField(null=True)
     rightascension = CharField(null=True)
-    sys = IntegerField(db_column='sys_id', primary_key=True)
+    sys = IntegerField(db_column='sys_id', primary_key=True) # Don't change this line
     name = CharField(null=True)
     videolink = CharField(null=True)
 
@@ -23,7 +23,7 @@ class System(BaseModel):
 class Binary(BaseModel):
     ascendingnode = FloatField(null=True)
     attributes = TextField(null=True)
-    bin = IntegerField(db_column='bin_id', primary_key=True)
+    bin = IntegerField(db_column='bin_id', primary_key=True) # Don't change this line
     name = CharField(null=True)
     names = TextField(null=True)
     eccentricity = FloatField(null=True)
@@ -37,14 +37,14 @@ class Binary(BaseModel):
     magr = FloatField(db_column='magR', null=True)
     magv = FloatField(db_column='magV', null=True)
     meananomaly = FloatField(null=True)
-    parent_binary = ForeignKeyField(db_column='parent_binary', null=True, rel_model='self', to_field='bin')
+    parent_binary = ForeignKeyField(db_column='parent_binary', null=True, rel_model='self', to_field='bin') # Don't change this line
     periastron = FloatField(null=True)
     periastrontime = FloatField(null=True)
     period = FloatField(null=True)
     positionangle = FloatField(null=True)
     semimajoraxis = FloatField(null=True)
     separation = FloatField(null=True)
-    sys = ForeignKeyField(db_column='sys_id', null=True, rel_model=System, to_field='sys')
+    sys = ForeignKeyField(db_column='sys_id', null=True, rel_model=System, to_field='sys') # Don't change this line
     transittime = FloatField(null=True)
 
     class Meta:
@@ -53,7 +53,7 @@ class Binary(BaseModel):
 class Star(BaseModel):
     age = FloatField(null=True)
     attributes = TextField(null=True)
-    parent_binary = ForeignKeyField(db_column='bin_id', null=True, rel_model=Binary, to_field='bin')
+    parent_binary = ForeignKeyField(db_column='bin_id', null=True, rel_model=Binary, to_field='bin') # Don't change this line
     magb = FloatField(db_column='magB', null=True)
     magh = FloatField(db_column='magH', null=True)
     magi = FloatField(db_column='magI', null=True)
@@ -62,14 +62,13 @@ class Star(BaseModel):
     magr = FloatField(db_column='magR', null=True)
     magv = FloatField(db_column='magV', null=True)
     mass = FloatField(null=True)
-    metallicity = FloatField(null=True)
-    #parent_star = ForeignKeyField(db_column='parent_star', null=True, rel_model='self', to_field='star')
+    metallicity = FloatField(null=True)    
     radius = FloatField(null=True)
     spectraltype = CharField(null=True)
-    star = IntegerField(db_column='star_id', primary_key=True)
+    star = IntegerField(db_column='star_id', primary_key=True) # Don't change this line
     name = CharField(null=True)
     names = TextField(null=True)
-    sys = ForeignKeyField(db_column='sys_id', null=True, rel_model=System, to_field='sys')
+    sys = ForeignKeyField(db_column='sys_id', null=True, rel_model=System, to_field='sys') # Don't change this line
     temperature = FloatField(null=True)
 
     class Meta:
@@ -78,8 +77,8 @@ class Star(BaseModel):
 class Planet(BaseModel):
     age = FloatField(null=True)
     ascendingnode = FloatField(null=True)
-    attributes = TextField(null=True)
-    parent_binary = ForeignKeyField(db_column='bin_id', null=True, rel_model=Binary, to_field='bin')
+    attributes = TextField(null=True) 
+    parent_binary = ForeignKeyField(db_column='bin_id', null=True, rel_model=Binary, to_field='bin') # Don't change this line
     description = TextField(null=True)
     discoverymethod = CharField(null=True)
     discoveryyear = IntegerField(null=True)  # year
@@ -108,7 +107,7 @@ class Planet(BaseModel):
     separation = FloatField(null=True)
     spectraltype = CharField(null=True)
     spinorbitalignment = FloatField(null=True)
-    parent_star = ForeignKeyField(db_column='star_id', null=True, rel_model=Star, to_field='star')
+    parent_star = ForeignKeyField(db_column='star_id', null=True, rel_model=Star, to_field='star') # Don't change this line
     temperature = FloatField(null=True)
     transittime = FloatField(null=True)
 

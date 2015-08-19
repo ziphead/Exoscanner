@@ -1,6 +1,8 @@
 # Exoscanner
 
    Exoscanner is a python program, which creates mysql  tables in your database and fills them with data from the Open Exoplanet Catalogue. https://github.com/OpenExoplanetCatalogue/open_exoplanet_catalogue. It preserves relations between bodies in systems by separating system, star , binary, planet data into 4 tables linked with foreign keys.
+   Exoscanner is not a replacement for The OEC.  Maybe another instance or a tool to make your own exoplanet SQL database. File "models.py" contains all the tags for each model and you can freely remove some of them or add yours then built your own database with data you need for specific calculations or for personal web page.
+   
 
 ![alt tag](http://i58.tinypic.com/flwms.png)
 
@@ -12,6 +14,9 @@ Used python modules:
 
 ### Version
 0.1.0 (Alpha)
+
+### Issues
+- separation tag value overwrites in database (in progress)
 
 
 ### Installation
@@ -55,6 +60,7 @@ $ python control.py
 ### Development
 
 - Control module (in progress)
+- Update pattern to keep db up-to-date.
 
 **Contacts**
 

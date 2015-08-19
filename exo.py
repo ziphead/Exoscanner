@@ -163,8 +163,8 @@ if __name__ == "__main__":
     try :
         db.connect()
     except:
-        handle_exception()
-        raise
+        print 'Connection error! Check "models.py" '
+        exit()
     
     db.create_tables([System, Binary, Star, Planet],  True)    
     print 'done creating db'
