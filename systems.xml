@@ -51507,7 +51507,7 @@ Credit: Joe Gallagher.</imagedescription>
 			<mass errorminus="0.0028" errorplus="0.0028">0.0444</mass>
 			<separation errorminus="0.3" errorplus="0.3" unit="AU">3.5</separation>
 			<discoverymethod>microlensing</discoverymethod>
-			<lastupdate>15/08/01</lastupdate>
+			<lastupdate>15/09/01</lastupdate>
 			<discoveryyear>2005</discoveryyear>
 			<description>The planetary signal in the microlensing event OGLE-2005-BLG-169 was confirmed in 2015 with follow-up measurements of the relative proper motion of the source and lens stars. The lens system consists of a 14.1 Earth mass planet orbiting a 0.69 solar mass K-dwarf with a projected separation of 3.5 AU. Assuming random orientation of the system, the 3D separation is 4.0+2.2-0.6 AU, locating it well beyond the star's snowline. The planet likely represents a "failed Jupiter core".</description>
 		</planet>

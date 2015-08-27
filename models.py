@@ -1,5 +1,5 @@
 from peewee import *
-db = MySQLDatabase('your_db_name', user='msql_user',passwd='password') # Type your mysql parameters here
+db = MySQLDatabase('exop', user='root',passwd='zipoza') # Type your mysql parameters here
 
 
 class BaseModel(Model):
@@ -43,9 +43,11 @@ class Binary(BaseModel):
     period = FloatField(null=True)
     positionangle = FloatField(null=True)
     semimajoraxis = FloatField(null=True)
-    separation = FloatField(null=True)
+    #separation = FloatField(null=True)
     sys = ForeignKeyField(db_column='sys_id', null=True, rel_model=System, to_field='sys') # Don't change this line
     transittime = FloatField(null=True)
+    separation_au = FloatField(null=True)
+    separation_arcsec = FloatField(null=True)
 
     class Meta:
         db_table = 'Binary'
@@ -104,12 +106,14 @@ class Planet(BaseModel):
     positionangle = FloatField(null=True)
     radius = FloatField(null=True)
     semimajoraxis = FloatField(null=True)
-    separation = FloatField(null=True)
+    #separation = FloatField(null=True)
     spectraltype = CharField(null=True)
     spinorbitalignment = FloatField(null=True)
     parent_star = ForeignKeyField(db_column='star_id', null=True, rel_model=Star, to_field='star') # Don't change this line
     temperature = FloatField(null=True)
     transittime = FloatField(null=True)
+    separation_au = FloatField(null=True)
+    separation_arcsec = FloatField(null=True)
 
     class Meta:
         db_table = 'Planet'
