@@ -1,6 +1,6 @@
 from peewee import *
 db = SqliteDatabase('exoscanner.db')
-#db = MySQLDatabase('exop', user='root',passwd='zipoza') # Type your mysql parameters here
+#db = MySQLDatabase('exop', user='youruser',passwd='password') # Type your mysql parameters here
 
 
 class BaseModel(Model):
