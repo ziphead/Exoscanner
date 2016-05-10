@@ -1,4 +1,4 @@
-from models import *
+1from models import *
 from exo import Scanner
 from datetime import datetime
 
