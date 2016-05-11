@@ -1,4 +1,4 @@
-1from models import *
+from models import *
 from exo import Scanner
 from datetime import datetime
 
@@ -23,6 +23,8 @@ def update():
                 #continue
             if lupdate > uptime:
                 uptime = lupdate
+        
+            
     print 'looking for ', uptime
     
     try : 
@@ -30,7 +32,7 @@ def update():
         print query.name , 'is the last found planet. Database is up-to-date.'
     except :
         print 'updating'
-        db.drop_tables([Planet, Star, Binary, System ], safe=True,  cascade=True)
+        db.drop_tables([Planet, Star, Binary, System ], safe=True)
         print 'drop old'
         Scanner().create_tables()  
         Scanner().filler(x) 
