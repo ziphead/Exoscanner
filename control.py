@@ -23,12 +23,16 @@ def update():
                 #continue
             if lupdate > uptime:
                 uptime = lupdate
+                print uptime
         
             
     print 'looking for ', uptime
     
     try : 
+        uptime = datetime.strptime(uptime,'%Y-%m-%d').strftime('%y/%m/%d')
+        print uptime , ' this is new uptime'
         query = Planet.get(Planet.lastupdate == uptime)
+
         print query.name , 'is the last found planet. Database is up-to-date.'
     except :
         print 'updating'
